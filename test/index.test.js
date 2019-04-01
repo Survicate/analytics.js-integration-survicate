@@ -79,6 +79,15 @@ describe('Survicate', function() {
         });
       });
 
+      it('should send first and last name', function() {
+        analytics.identify('id', { firstName: 'john', lastName: 'doe' });
+        analytics.called(window._sva.setVisitorTraits, {
+          user_id: 'id',
+          first_name: 'john',
+          last_name: 'doe'
+        });
+      });
+
       it('should send custom traits', function() {
         analytics.identify('id', { eyes: 'brown' });
         analytics.called(window._sva.setVisitorTraits, {
@@ -87,9 +96,30 @@ describe('Survicate', function() {
         });
       });
 
-      it('should ommit signUpDate', function() {
-        var now = new Date();
-        analytics.identify('id', { createdAt: now });
+      it('should flatten object traits', function() {
+        analytics.identify('id', {
+          address: {
+            street: '6th St',
+            city: 'San Francisco',
+            state: 'CA',
+            postalCode: '94103',
+            country: 'USA'
+          }
+        });
+        analytics.called(window._sva.setVisitorTraits, {
+          user_id: 'id',
+          address_street: '6th St',
+          address_city: 'San Francisco',
+          address_state: 'CA',
+          address_postal_code: '94103',
+          address_country: 'USA'
+        });
+      });
+
+      it('should drop arrays in traits', function() {
+        analytics.identify('id', {
+          stringifyMe: [{ a: 'b' }, { a: 'c' }]
+        });
         analytics.called(window._sva.setVisitorTraits, {
           user_id: 'id'
         });
@@ -103,6 +133,43 @@ describe('Survicate', function() {
 
       it('should send group_id', function() {
         analytics.group('id');
+        analytics.called(window._sva.setVisitorTraits, {
+          group_id: 'id'
+        });
+      });
+
+      it('should send custom traits', function() {
+        analytics.group('id', { eyes: 'brown' });
+        analytics.called(window._sva.setVisitorTraits, {
+          group_id: 'id',
+          group_eyes: 'brown'
+        });
+      });
+
+      it('should flatten object traits', function() {
+        analytics.group('id', {
+          address: {
+            street: '6th St',
+            city: 'San Francisco',
+            state: 'CA',
+            postalCode: '94103',
+            country: 'USA'
+          }
+        });
+        analytics.called(window._sva.setVisitorTraits, {
+          group_id: 'id',
+          group_address_street: '6th St',
+          group_address_city: 'San Francisco',
+          group_address_state: 'CA',
+          group_address_postal_code: '94103',
+          group_address_country: 'USA'
+        });
+      });
+
+      it('should drop arrays in traits', function() {
+        analytics.group('id', {
+          stringifyMe: [{ a: 'b' }, { a: 'c' }]
+        });
         analytics.called(window._sva.setVisitorTraits, {
           group_id: 'id'
         });

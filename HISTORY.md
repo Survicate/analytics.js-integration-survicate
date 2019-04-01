@@ -2,3 +2,8 @@
 ==================
 
   * Initial commit :sparkles:
+
+1.0.1 / 2019-04-01
+==================
+
+  * Flatten Objects
