@@ -1,5 +1,5 @@
 {
-  "name": "@segment/analytics.js-integration-survicate",
+  "name": "@survicate/analytics.js-integration-survicate",
   "description": "The Survicate analytics.js integration.",
   "version": "1.0.1",
   "keywords": [
