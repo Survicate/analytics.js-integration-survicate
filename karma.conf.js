@@ -7,7 +7,14 @@ module.exports = function(config) {
       'test/**/*.test.js'
     ],
 
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS_custom'],
+
+    customLaunchers: {
+      PhantomJS_custom: {
+        base: 'PhantomJS',
+        flags: ['--ignore-ssl-errors=true']
+      }
+    },
 
     frameworks: ['browserify', 'mocha'],
 
