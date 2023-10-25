@@ -23,14 +23,14 @@
   },
   "homepage": "https://github.com/Survicate/analytics.js-integration-survicate#readme",
   "dependencies": {
-    "@segment/analytics.js-integration": "^3.3.3",
-    "do-when": "^1.0.0",
-    "change-case": "^5.0.2",
     "@ndhoule/each": "^2.0.1",
+    "@segment/analytics.js-integration": "^3.3.3",
+    "change-case": "^5.1.2",
+    "do-when": "^1.0.0",
     "is": "^3.3.0"
   },
   "devDependencies": {
-    "@segment/analytics.js-core": "^3.0.0",
+    "@segment/analytics.js-core": "^4.1.11",
     "@segment/analytics.js-integration-tester": "^3.1.1",
     "@segment/clear-env": "^2.1.1",
     "@segment/eslint-config": "^3.1.1",
