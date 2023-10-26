@@ -1,57 +1,34 @@
-/* eslint-env node */
+// Karma configuration
+// Generated on Wed Oct 25 2023 16:45:07 GMT+0200 (Central European Summer Time)
 'use strict';
 
 module.exports = function(config) {
   config.set({
+    basePath: '',
     files: [
-      'test/**/*.test.js'
+      './test/index.test.js'
     ],
-
-    browsers: ['PhantomJS_custom'],
-
-    customLaunchers: {
-      PhantomJS_custom: {
-        base: 'PhantomJS',
-        flags: ['--ignore-ssl-errors=true']
-      }
-    },
-
-    frameworks: ['browserify', 'mocha'],
-
-    reporters: ['spec', 'coverage'],
-
+    frameworks: ['mocha', 'browserify'],
+    reporters: ['progress'],
+    port: 9876,
+    colors: true,
+    logLevel: config.LOG_INFO,
+    autoWatch: true,
+    browsers: ['Chrome'],
+    singleRun: false,
+    concurrency: Infinity,
+    plugins: [
+      'karma-mocha',
+      'karma-chrome-launcher',
+      'karma-browserify'
+    ],
     preprocessors: {
-      'test/**/*.js': 'browserify'
-    },
-
-    client: {
-      mocha: {
-        grep: process.env.GREP,
-        reporter: 'html',
-        timeout: 10000
-      }
+      './test/index.test.js': ['browserify']
     },
 
     browserify: {
       debug: true,
-      transform: [
-        [
-          'browserify-istanbul',
-          {
-            instrumenterConfig: {
-              embedSource: true
-            }
-          }
-        ]
-      ]
-    },
-
-    coverageReporter: {
-      reporters: [
-        { type: 'text' },
-        { type: 'html' },
-        { type: 'json' }
-      ]
+      transform: []
     }
   });
 };
