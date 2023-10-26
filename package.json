@@ -10,7 +10,7 @@
   ],
   "main": "lib/index.js",
   "scripts": {
-    "test": "karma start --single-run"
+    "test": "playwright test"
   },
   "repository": {
     "type": "git",
@@ -31,27 +31,11 @@
   },
   "devDependencies": {
     "@segment/analytics.js-core": "^4.1.11",
+    "@segment/eslint-config": "^3.1.1",
     "@segment/analytics.js-integration-tester": "^3.1.1",
     "@segment/clear-env": "^2.1.1",
-    "@segment/eslint-config": "^3.1.1",
-    "browserify": "^17.0.0",
-    "browserify-istanbul": "^3.0.1",
     "eslint": "^2.9.0",
-    "eslint-plugin-mocha": "^2.2.0",
-    "eslint-plugin-require-path-exists": "^1.1.5",
-    "istanbul": "^0.4.3",
-    "karma": "6.4.2",
-    "karma-browserify": "^8.1.0",
-    "karma-chrome-launcher": "^3.2.0",
-    "karma-coverage": "^2.2.1",
-    "karma-junit-reporter": "^2.0.1",
-    "karma-mocha": "2.0.1",
-    "karma-puppeteer-launcher": "^1.0.4",
-    "karma-sauce-launcher": "^4.3.6",
-    "karma-spec-reporter": "0.0.36",
-    "mocha": "^10.2.0",
-    "npm-check": "^6.0.1",
-    "puppeteer": "^21.4.1",
-    "watchify": "^4.0.0"
+    "npm-check": "^6.0.1"
   }
 }
+
