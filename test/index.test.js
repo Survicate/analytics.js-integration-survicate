@@ -1,7 +1,5 @@
-const { test } = require('@playwright/test');
-const sinon = require('sinon');
-const Analytics = require('@segment/analytics.js-core').constructor;
-const Survicate = require('../lib/');
+import { test } from '@playwright/test';
+import * as sinon from 'sinon';
 
 test.describe('Survicate', () => {
     let analytics;
@@ -10,17 +8,16 @@ test.describe('Survicate', () => {
         workspaceKey: 'xMIeFQrceKnfKOuoYXZOVgqbsLlqYMGD'
     };
 
-    test.beforeEach(async () => {
+    test.beforeEach(async ({ page }) => {
+        const Analytics = await page.evaluate(() => require('@segment/analytics.js-core').constructor);
+        const Survicate = await page.evaluate(() => require('../lib/'));
+
         analytics = new Analytics();
         survicate = new Survicate(options);
         analytics.use(Survicate);
         analytics.add(survicate);
 
         sinon.stub(survicate, 'load');
-    });
-
-    test.afterEach(async () => {
-        sinon.restore();
     });
 
     test('should have the right settings', async () => {
