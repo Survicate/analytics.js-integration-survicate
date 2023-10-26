@@ -63,23 +63,9 @@ module.exports = function(config) {
 
     reporters: ['progress', 'junit', 'coverage'],
 
-    browsers: ['Chrome'],
-
-    frameworks: ['mocha', 'browserify'],
+    browsers: ['PhantomJS'].concat(Object.keys(customLaunchers)),
 
     customLaunchers: customLaunchers,
-
-    plugins: [
-      'karma-mocha',
-      'karma-browserify',
-      'karma-chrome-launcher',
-      'karma-phantomjs-launcher',
-      'karma-sauce-launcher',
-      'karma-coverage',
-      'karma-junit-reporter',
-      'karma-spec-reporter'
-    ],
-
 
     junitReporter: {
       outputDir: process.env.TEST_REPORTS_DIR,
