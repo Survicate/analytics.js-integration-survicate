@@ -1,3 +1,10 @@
 {
-  "extends": "@segment/eslint-config/browser/legacy"
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "sourceType": "module"
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  }
 }
